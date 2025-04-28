@@ -80,4 +80,4 @@ client.on('messageCreate', (message) => {
 });
 
 // Log in the bot
-client.login('YOUR_BOT_TOKEN_HERE'); // <--- Replace this with your bot token
+client.login('MTM2NjQ3NzQwMjQzOTQxNzg5OA.Gdz9sB.Bxl5nI5r9p4_jSMx73CLvyYPAh1mqPhQw5U_Ec'); // <--- Replace this with your bot token
