@@ -64,7 +64,10 @@ client.on('messageCreate', (message) => {
   const textReply = textReplyMap[message.content];
   const imageName = imageReplyMap[message.content];
 
+  console.log(`Message received: ${message.content}`);  // Log the message to check if it matches
+
   if (imageName) {
+    console.log(`Image found: ${imageName}`);  // Log the image name
     const imageUrl = `https://e-production-b06a.up.railway.app/images/${imageName}`;
 
     // Send the image as an embed
@@ -76,9 +79,13 @@ client.on('messageCreate', (message) => {
       }]
     });
   } else if (textReply) {
+    console.log(`Text reply found: ${textReply}`);  // Log the text reply
     message.channel.send(textReply);
+  } else {
+    console.log("No match found for the message.");
+    message.channel.send("No match found for your command!"); // Optionally, send a fallback message
   }
 });
 
 // Login your bot
-client.login('MTM2NjQ3NzQwMjQzOTQxNzg5OA.Gdz9sB.Bxl5nI5r9p4_jSMx73CLvyYPAh1mqPhQw5U_Ec'); // 🔴 replace with your real token
+client.login('YOUR_BOT_TOKEN'); // 🔴 replace with your real token
