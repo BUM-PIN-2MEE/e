@@ -3,13 +3,18 @@ const path = require('path');
 const { Client, GatewayIntentBits } = require('discord.js');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; // Use Railway port in production
 
-// Serve the images folder statically
+// Serve static images
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
+// Optional: Homepage route to avoid "Not Found"
+app.get('/', (req, res) => {
+  res.send('Bot server is running. Use /images/[filename] to view images.');
+});
+
 app.listen(PORT, () => {
-  console.log(`Express server running at http://localhost:${PORT}`);
+  console.log(`Express server running on port ${PORT}`);
 });
 
 // Discord bot setup
@@ -21,7 +26,7 @@ const client = new Client({
   ]
 });
 
-// Map for text replies
+// Text responses
 const textReplyMap = {
   "Talent domain su": "All the domains are available today",
   "Furina": "HP% / HP% / HP% (Golden Troupe)",
@@ -37,7 +42,7 @@ const textReplyMap = {
   "Kazuha": "EM / EM / EM (Viridescent Venerer) Recommended EM: 1k",
 };
 
-// Map for image replies
+// Image responses
 const imageReplyMap = {
   "Talent domain mo": "talent_mo.png",
   "Talent domain tu": "talent_tu.png",
@@ -47,7 +52,6 @@ const imageReplyMap = {
   "Talent domain sa": "talent_sa.png",
 };
 
-// Bot ready
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
 
@@ -57,7 +61,6 @@ client.on('ready', () => {
   });
 });
 
-// Handle messages
 client.on('messageCreate', (message) => {
   if (message.author.bot) return;
 
@@ -65,12 +68,12 @@ client.on('messageCreate', (message) => {
   const imageName = imageReplyMap[message.content];
 
   if (imageName) {
-    const imageUrl = `http://localhost:${PORT}/images/${imageName}`;
+    const imageUrl = `https://your-app-name.up.railway.app/images/${imageName}`; // <-- Replace this!
     message.channel.send(imageUrl);
   } else if (textReply) {
     message.channel.send(textReply);
   }
 });
 
-// Login your bot
-client.login('MTM2NjQ3NzQwMjQzOTQxNzg5OA.Gdz9sB.Bxl5nI5r9p4_jSMx73CLvyYPAh1mqPhQw5U_Ec'); // 🔴 replace with your real token
+// 🔴 Replace this token with your actual secret token (do NOT share publicly!)
+client.login('MTM2NjQ3NzQwMjQzOTQxNzg5OA.Gdz9sB.Bxl5nI5r9p4_jSMx73CLvyYPAh1mqPhQw5U_Ec');
