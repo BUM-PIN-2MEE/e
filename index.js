@@ -23,12 +23,12 @@ const client = new Client({
 
 // Map for text replies
 const textReplyMap = {
-  "Talent domain mo": "mo.png",
-  "Talent domain tu": "tu.png",
-  "Talent domain we": "we.png",
-  "Talent domain th": "mo.png",
-  "Talent domain fr": "tu.png",
-  "Talent domain sa": "we.png",
+  "Talent domain mo": "https://github.com/BUM-PIN-2MEE/e/blob/main/Images/mo.png?raw=true",
+  "Talent domain tu": "https://github.com/BUM-PIN-2MEE/e/blob/main/Images/tu.png?raw=true",
+  "Talent domain we": "https://github.com/BUM-PIN-2MEE/e/blob/main/Images/we.png?raw=true",
+  "Talent domain th": "https://github.com/BUM-PIN-2MEE/e/blob/main/Images/mo.png?raw=true",
+  "Talent domain fr": "https://github.com/BUM-PIN-2MEE/e/blob/main/Images/tu.png?raw=true",
+  "Talent domain sa": "https://github.com/BUM-PIN-2MEE/e/blob/main/Images/we.png?raw=true",
   "Talent domain su": "All the domains are available today",
   "Furina": "HP% / HP% / HP% (Golden Troupe)",
   "Layla": "HP% / HP% / HP% (Tenacity of the Millelith)",
