@@ -88,4 +88,4 @@ client.on('messageCreate', (message) => {
 });
 
 // Login your bot
-client.login('YOUR_BOT_TOKEN'); // 🔴 replace with your real token
+client.login('MTM2NjQ3NzQwMjQzOTQxNzg5OA.Gdz9sB.Bxl5nI5r9p4_jSMx73CLvyYPAh1mqPhQw5U_Ec'); // 🔴 replace with your real token
