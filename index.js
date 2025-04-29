@@ -3,7 +3,7 @@ const path = require('path');
 const { Client, GatewayIntentBits } = require('discord.js');
 
 const app = express();
-const PORT = process.env.PORT || 3000; // Use Railway port in production
+const PORT = process.env.PORT || 8080; // Use Railway port in production
 
 // Serve static images
 app.use('/images', express.static(path.join(__dirname, 'images')));
@@ -44,12 +44,12 @@ const textReplyMap = {
 
 // Image responses
 const imageReplyMap = {
-  "Talent domain mo": "talent_mo.png",
-  "Talent domain tu": "talent_tu.png",
-  "Talent domain we": "talent_we.png",
-  "Talent domain th": "talent_th.png",
-  "Talent domain fr": "talent_fr.png",
-  "Talent domain sa": "talent_sa.png",
+  "Talent domain mo": "mo.png",
+  "Talent domain tu": "tu.png",
+  "Talent domain we": "we.png",
+  "Talent domain th": "mo.png",
+  "Talent domain fr": "tu.png",
+  "Talent domain sa": "we.png",
 };
 
 client.on('ready', () => {
