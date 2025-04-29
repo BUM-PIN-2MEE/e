@@ -44,12 +44,12 @@ const textReplyMap = {
 
 // Image responses
 const imageReplyMap = {
-  "Talent domain mo": "mo.png",
-  "Talent domain tu": "tu.png",
-  "Talent domain we": "we.png",
-  "Talent domain th": "mo.png",
-  "Talent domain fr": "tu.png",
-  "Talent domain sa": "we.png",
+  "talent domain mo": "mo.png",
+  "talent domain tu": "tu.png",
+  "talent domain we": "we.png",
+  "talent domain th": "mo.png",
+  "talent domain fr": "tu.png",
+  "talent domain sa": "we.png",
 };
 
 client.on('ready', () => {
@@ -68,7 +68,7 @@ client.on('messageCreate', (message) => {
   const imageName = imageReplyMap[message.content];
 
   if (imageName) {
-    const imageUrl = `https://your-app-name.up.railway.app/images/${imageName}`; // <-- Replace this!
+    const imageUrl = `https://e-production-b06a.up.railway.app/images/${imageName}`; // <-- Replace this!
     message.channel.send(imageUrl);
   } else if (textReply) {
     message.channel.send(textReply);
