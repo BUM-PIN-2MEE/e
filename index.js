@@ -23,12 +23,12 @@ const client = new Client({
 
 // Map for text replies
 const textReplyMap = {
-  "Talent domain mo": "https://github.com/BUM-PIN-2MEE/e/blob/main/Images/mo.png",
-  "Talent domain tu": "https://github.com/BUM-PIN-2MEE/e/blob/main/Images/tu.png",
-  "Talent domain we": "https://github.com/BUM-PIN-2MEE/e/blob/main/Images/we.png",
-  "Talent domain th": "https://github.com/BUM-PIN-2MEE/e/blob/main/Images/mo.png",
-  "Talent domain fr": "https://github.com/BUM-PIN-2MEE/e/blob/main/Images/tu.png",
-  "Talent domain sa": "https://github.com/BUM-PIN-2MEE/e/blob/main/Images/we.png",
+  "Talent domain mo": "https://raw.github.com/BUM-PIN-2MEE/e/blob/main/Images/mo.png",
+  "Talent domain tu": "https://raw.github.com/BUM-PIN-2MEE/e/blob/main/Images/tu.png",
+  "Talent domain we": "https://raw.github.com/BUM-PIN-2MEE/e/blob/main/Images/we.png",
+  "Talent domain th": "https://raw.github.com/BUM-PIN-2MEE/e/blob/main/Images/mo.png",
+  "Talent domain fr": "https://raw.github.com/BUM-PIN-2MEE/e/blob/main/Images/tu.png",
+  "Talent domain sa": "https://raw.github.com/BUM-PIN-2MEE/e/blob/main/Images/we.png",
   "Talent domain su": "All the domains are available today",
   "Furina": "HP% / HP% / HP% (Golden Troupe)",
   "Layla": "HP% / HP% / HP% (Tenacity of the Millelith)",
