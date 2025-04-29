@@ -3,18 +3,13 @@ const path = require('path');
 const { Client, GatewayIntentBits } = require('discord.js');
 
 const app = express();
-const PORT = process.env.PORT || 8080; // Use Railway port in production
+const PORT = 3000;
 
-// Serve static images
+// Serve the images folder statically
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-// Optional: Homepage route to avoid "Not Found"
-app.get('/', (req, res) => {
-  res.send('Bot server is running. Use /images/[filename] to view images.');
-});
-
 app.listen(PORT, () => {
-  console.log(`Express server running on port ${PORT}`);
+  console.log(`Express server running at http://localhost:${PORT}`);
 });
 
 // Discord bot setup
@@ -26,7 +21,7 @@ const client = new Client({
   ]
 });
 
-// Text responses
+// Map for text replies
 const textReplyMap = {
   "Talent domain su": "All the domains are available today",
   "Furina": "HP% / HP% / HP% (Golden Troupe)",
@@ -42,16 +37,17 @@ const textReplyMap = {
   "Kazuha": "EM / EM / EM (Viridescent Venerer) Recommended EM: 1k",
 };
 
-// Image responses
+// Map for image replies
 const imageReplyMap = {
-  "talent domain mo": "mo.png",
-  "talent domain tu": "tu.png",
-  "talent domain we": "we.png",
-  "talent domain th": "mo.png",
-  "talent domain fr": "tu.png",
-  "talent domain sa": "we.png",
+  "Talent domain mo": "mo.png",
+  "Talent domain tu": "tu.png",
+  "Talent domain we": "we.png",
+  "Talent domain th": "th.png",
+  "Talent domain fr": "fr.png",
+  "Talent domain sa": "sa.png",
 };
 
+// Bot ready
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
 
@@ -61,6 +57,7 @@ client.on('ready', () => {
   });
 });
 
+// Handle messages
 client.on('messageCreate', (message) => {
   if (message.author.bot) return;
 
@@ -68,12 +65,20 @@ client.on('messageCreate', (message) => {
   const imageName = imageReplyMap[message.content];
 
   if (imageName) {
-    const imageUrl = `https://e-production-b06a.up.railway.app/images/${imageName}`; // <-- Replace this!
-    message.channel.send(imageUrl);
+    const imageUrl = `https://e-production-b06a.up.railway.app/images/${imageName}`;
+
+    // Send the image as an embed
+    message.channel.send({
+      embeds: [{
+        image: {
+          url: imageUrl
+        }
+      }]
+    });
   } else if (textReply) {
     message.channel.send(textReply);
   }
 });
 
-// 🔴 Replace this token with your actual secret token (do NOT share publicly!)
-client.login('MTM2NjQ3NzQwMjQzOTQxNzg5OA.Gdz9sB.Bxl5nI5r9p4_jSMx73CLvyYPAh1mqPhQw5U_Ec');
+// Login your bot
+client.login('MTM2NjQ3NzQwMjQzOTQxNzg5OA.Gdz9sB.Bxl5nI5r9p4_jSMx73CLvyYPAh1mqPhQw5U_Ec'); // 🔴 replace with your real token
