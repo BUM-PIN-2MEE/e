@@ -23,6 +23,12 @@ const client = new Client({
 
 // Map for text replies
 const textReplyMap = {
+  "Talent domain mo": "mo.png",
+  "Talent domain tu": "tu.png",
+  "Talent domain we": "we.png",
+  "Talent domain th": "mo.png",
+  "Talent domain fr": "tu.png",
+  "Talent domain sa": "we.png",
   "Talent domain su": "All the domains are available today",
   "Furina": "HP% / HP% / HP% (Golden Troupe)",
   "Layla": "HP% / HP% / HP% (Tenacity of the Millelith)",
@@ -35,16 +41,6 @@ const textReplyMap = {
   "Faruzan": "(ER% / ATK%) / Anemo Damage Bonus / (Crit Damage/Crit rate) (Viridescent Venerer) Recommended ER: 200-250",
   "Nahida": "EM / EM / EM (Deepwood Memories) Recommended EM: 1k",
   "Kazuha": "EM / EM / EM (Viridescent Venerer) Recommended EM: 1k",
-};
-
-// Map for image replies
-const imageReplyMap = {
-  "Talent domain mo": "mo.png",
-  "Talent domain tu": "tu.png",
-  "Talent domain we": "we.png",
-  "Talent domain th": "th.png",
-  "Talent domain fr": "fr.png",
-  "Talent domain sa": "sa.png",
 };
 
 // Bot ready
@@ -62,28 +58,11 @@ client.on('messageCreate', (message) => {
   if (message.author.bot) return;
 
   const textReply = textReplyMap[message.content];
-  const imageName = imageReplyMap[message.content];
 
-  console.log(`Message received: ${message.content}`);  // Log the message to check if it matches
-
-  if (imageName) {
-    console.log(`Image found: ${imageName}`);  // Log the image name
-    const imageUrl = `https://e-production-b06a.up.railway.app/images/${imageName}`;
-
-    // Send the image as an embed
-    message.channel.send({
-      embeds: [{
-        image: {
-          url: imageUrl
-        }
-      }]
-    });
-  } else if (textReply) {
-    console.log(`Text reply found: ${textReply}`);  // Log the text reply
+  if (textReply) {
     message.channel.send(textReply);
   } else {
-    console.log("No match found for the message.");
-    message.channel.send("No match found for your command!"); // Optionally, send a fallback message
+    message.channel.send("No match found for your command!"); // Optional fallback message
   }
 });
 
