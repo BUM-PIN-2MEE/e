@@ -1,12 +1,12 @@
 const express = require('express');
 const path = require('path');
-const { Client, GatewayIntentBits } = require('discord.js');
+const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
 
 const app = express();
 const PORT = 3000;
 
 // Serve the images folder statically
-app.use('/Images', express.static(path.join(__dirname, 'Images')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.listen(PORT, () => {
   console.log(`Express server running at http://localhost:${PORT}`);
@@ -60,7 +60,18 @@ client.on('messageCreate', (message) => {
   const textReply = textReplyMap[message.content];
 
   if (textReply) {
-    message.channel.send(textReply);
+    // If it's an image URL
+    if (textReply.startsWith("https://raw.githubusercontent.com")) {
+      const embed = new EmbedBuilder()
+        .setImage(textReply) // Embed the image URL
+        .setColor('#0099ff') // Optional, you can customize the embed color
+        .setTitle('Image Response')
+        .setDescription('Here is the image you requested!');
+
+      message.channel.send({ embeds: [embed] });
+    } else {
+      message.channel.send(textReply);
+    }
   } else {
     message.channel.send("No match found for your command!"); // Optional fallback message
   }
